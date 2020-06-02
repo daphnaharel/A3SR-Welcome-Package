@@ -11,7 +11,7 @@ The following instructions will guide you through installing **R**, **RStudio**,
 
 It is important to download R, before installing RStudio as all versions of RStudio requires users to have downloaded prior to running RStudio. 
 
-Note: Instructions were written for Windows 7.
+Note: Instructions were written for Windows 7. Furthermore, note that a newer version of R and RStudio is currently available than what is pictured here, but instructions to download are the same.
 
 A helpful link for other operating versions of Windows:
 \newline

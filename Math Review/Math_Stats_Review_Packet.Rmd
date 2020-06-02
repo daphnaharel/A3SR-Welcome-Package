@@ -11,8 +11,6 @@ header-includes:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-# Fall 2019  
   
 ### A Note: 
 The notes in this packet are not meant to be comprehensive in any way, nor should they be used for learning this material for the first time. Instead, the resources provided here are meant to accomplish two main goals: \newline

@@ -1,5 +1,5 @@
 ---
-title: "Probability Homework 1: Simulation"
+title: "Probability Practice Homework: Simulation"
 output: pdf_document
 ---
 
@@ -210,9 +210,9 @@ print(table(nHeads))
 ```
 
 
-# Homework (Due after 1st week of classes)  
+# Homework
 
-Note: This assignment should be submitted as a knitted PDF file. You may delete all notes above the Homework heading before submitting.  
+Note: This assignment should be converted to a knitted PDF file.  
   
 A friend proposes that you play a game with dice. You will roll 2 die. If the sum of those two rolls is a 7, your friend will pay you \$3; if the sum is an 11, your friend will pay you \$5. If the two rolls add up to any other value, you have to pay \$0.70  
   
