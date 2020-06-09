@@ -1,5 +1,5 @@
 ---
-title: "Probability Practice Homework: Simulation"
+title: "Probability Homework: Simulation"
 output: pdf_document
 ---
 
