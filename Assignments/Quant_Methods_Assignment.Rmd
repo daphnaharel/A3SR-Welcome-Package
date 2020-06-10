@@ -1,6 +1,6 @@
 ---
-title: "Quantitative Methods Assignment"
-author: "Firstname Lastname"
+title: "Quantitative Methods Practice Assignment"
+author: ""
 output: pdf_document
 ---
 
@@ -64,64 +64,64 @@ Suppose for a moment that you only have one set of heights, say, $\{60, 63, 63, 
 
 Now, suppose we try to fit an OLS regression line to this data. This would involve finding values of $\beta_0$ and $\beta_1$ such that the (squared) vertical distance between each point (in the above graph) and the line $Height=\beta_0+\beta_1*Male$ is minimized. 
 
-There are only two possible values of "Male" in this dataset: 0 and 1. Therefore, one way to think about minimizing the vertical distances between each data point and the line is this: Find the mean height of women (i.e., everyone with Male=0), find the mean height of men (i.e., everyone with Male=1), and connect the two points $(0,\text{mean womens height} )$ and $(1,\text{mean mens height} )$.   
+There are only two possible values of "Male" in this dataset: 0 and 1. Therefore, one way to think about minimizing the vertical distances between each data point and the line is this: Find the mean height of female (i.e., everyone with Male=0), find the mean height of male (i.e., everyone with Male=1), and connect the two points $(0,\text{mean female height} )$ and $(1,\text{mean male height} )$.   
 
-Now we can try to write the equation for this line in the form $Height=\beta_0+\beta_1*Male$. Using the strategy described above, we know that $(0,\text{mean womens height})$ is the y-intercept of the line. Therefore $\beta_0 = \text{mean womens height}$. We also know that $\beta_1$ is the slope of the line. Since we know two points on the line, we can calculate the slope as $\frac{y_2-y_1}{x_2-x_1}= \frac{(\text{mean mens height} - \text{mean womens height})}{(1-0)} = \text{mean mens height} - \text{mean womens height}$. So, $\beta_1 =\text{mean mens height}-\text{mean womens height}$. 
+Now we can try to write the equation for this line in the form $Height=\beta_0+\beta_1*Male$. Using the strategy described above, we know that $(0,\text{mean female height})$ is the y-intercept of the line. Therefore $\beta_0 = \text{mean female height}$. We also know that $\beta_1$ is the slope of the line. Since we know two points on the line, we can calculate the slope as $\frac{y_2-y_1}{x_2-x_1}= \frac{(\text{mean male height} - \text{mean female height})}{(1-0)} = \text{mean male height} - \text{mean female height}$. So, $\beta_1 =\text{mean male height}-\text{mean female height}$. 
 
-A question to think about: is testing $\beta_1 = 0$ the same as testing the mean of men's height and women's height to be the same (this is the two sample t-test problem)?
+A question to think about: is testing $\beta_1 = 0$ the same as testing the mean male height and the mean female height to be the same (this is the two sample t-test problem)?
     
 \pagebreak   
   
 # Assignment  
 
-1. The mean height of men is calculated below and saved as MM. Fill in the rest of the code to a) save the mean height of women as MW and b) print the mean height of women  
+1. The mean male height is calculated below and saved as MM. Fill in the rest of the code to a) save the mean female height as MF and b) print the mean female height  
 ```{r}
-# Save mean height of men as MM
+# Save mean male height as MM
 MM <- mean(height$Height[height$Male==1])
 
-# Print mean height of men  
+# Print mean male height   
 MM
 
-# Save mean height of women as MW
+# Save mean female height MF
 
-# Print mean height of women  
+# Print mean female height  
 
 ```
   
 2. Calculate the mean difference for the two groups and plot the regression line     
-  a) Save and print: MeanDiff = MM - MW   
-  b) Add (0, MW) and (1,MM) to the plot from above (in yellow)   
-  c) Draw a line connecting (0, MW) and (1,MM) using the abline() function  
+  a) Save and print: MeanDiff = MM - MF   
+  b) Add (0, MF) and (1,MM) to the plot from above (in yellow)   
+  c) Draw a line connecting (0, MF) and (1,MM) using the abline() function  
 ```{r}
-# Save the difference in means (MM-MW) as the variable MeanDiff: 
+# Save the difference in means (MM-MF) as the variable MeanDiff: 
 
 # Print MeanDiff  
 
 # Re-plot the data
 plot(height$Male, height$Height, xlab="Male", ylab="Height")
 
-# Add (0, MW) to the plot (in yellow) (note: (1,MM) has been added for you)  
+# Add (0, MF) to the plot (in yellow) (note: (1,MM) has been added for you)  
 # Note: pch=16 makes the dot filled in, which makes it easier to see  
 points(1, MM, col=7, pch=16)
 
-# Draw the line Height=b_0 + b_1*Male where b_0=MW and b_1=MeanDiff  
+# Draw the line Height=b_0 + b_1*Male where b_0=MF and b_1=MeanDiff  
 # Use the abline() function which takes parameters a and b where a=y-intercept and b=slope  
 # Syntax is: abline(a,b)  
 
 ```
     
 3. Estimate the standard error for an independent sample T-test by hand (note: assume pooled standard deviation)  
-  a) Calculate nM and nW, the number of men and women in the sample, respectively  
-  b) Calculate sM and sW, the sample standard deviations for the men's heights and women's heights, respectively   
+  a) Calculate nM and nF, the number of males and females in the sample, respectively  
+  b) Calculate sM and sF, the sample standard deviations for the males' heights and females' heights, respectively   
   c) Calculate $s_{pooled}$ for the two groups using $s_{pooled}=\sqrt{\frac{s_1^2(n_1-1)+s_2^2(n_2-1)}{n_1+n_2-2}}$ and save the result as spool   
-  d) Use the following equation: $SE(\bar{x_1}-\bar{x_2})=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$ to estimate $SE(\bar{x_1}-\bar{x_2})$ where $s_1=s_2=s_{pooled}$ and $n_1=nW$, $n_2=nM$. Save the result as SEMeanDiff and print the result.    
+  d) Use the following equation: $SE(\bar{x_1}-\bar{x_2})=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$ to estimate $SE(\bar{x_1}-\bar{x_2})$ where $s_1=s_2=s_{pooled}$ and $n_1=nF$, $n_2=nM$. Save the result as SEMeanDiff and print the result.    
   
 
 ```{r}
-# Add code to calculate the number of women and save the result as nW
+# Add code to calculate the number of females and save the result as nF
 nM <- length(height$Height[height$Male==1])
 
-# Add code to calculate sW, the sample standard deviation for women's heights  
+# Add code to calculate sF, the sample standard deviation for females' heights  
 sM <- sd(height$Height[height$Male==1])  
 
 # Calculate pooled standard deviation and save as spool (note: sqrt() calculates square root)
@@ -134,9 +134,9 @@ sM <- sd(height$Height[height$Male==1])
 
 ```
      
-4. Calculate a T-Statistic by hand to compare the null hypothesis that $MM-MW=0$ versus the alternative hypothesis that $MM-MW\ne0$
+4. Calculate a T-Statistic by hand to compare the null hypothesis that $MM-MF=0$ versus the alternative hypothesis that $MM-MF\ne0$
   a) Calculate $T=\frac{(\text{MeanDiff})-0}{\text{SEMeanDiff}}$ and save the result as Ttest  
-  b) Use the pt function to calculate a p-value for Ttest (degrees freedom= nW+nM-2). Hint: You will want to use the parameter lower.tail=FALSE because Ttest should be $>0$ for this example, then multiply by 2 to get a 2-sided test  
+  b) Use the pt function to calculate a p-value for Ttest (degrees freedom= nF+nM-2). Hint: You will want to use the parameter lower.tail=FALSE because Ttest should be $>0$ for this example, then multiply by 2 to get a 2-sided test  
 
 
 ```{r}
@@ -150,7 +150,7 @@ sM <- sd(height$Height[height$Male==1])
    
 5. Do the same thing using the t.test() function in R. Compare the value of t and p-value computed by the t.test() function to the values you calculated above. Note that setting var.equal=TRUE causes t.test() to use pooled variance. Do you get the same value (to two decimal places) for the T statistic?           
 ```{r}
-# Use the t.test function to compare the men's heights and female's heights  
+# Use the t.test function to compare the males' heights and females' heights  
 # Note: the code has already been written for you (just uncomment the line below to run it)
 
 # t.test(height$Height[height$Male==1],height$Height[height$Male==0], var.equal = TRUE)
@@ -166,9 +166,9 @@ linmod <- lm(Height~Male, data=height)
 
 ```
    
-7. Reprint the following values that you saved in previous problems: Mean women's height (MW), difference in mean height for men and women (MeanDiff), standard error of this mean difference (SEMeanDiff), and the T statistic for the difference in means (Ttest). Which of these values can you find in the lm() output above?  
+7. Reprint the following values that you saved in previous problems: Mean females height (MF), difference in mean height for males and females (MeanDiff), standard error of this mean difference (SEMeanDiff), and the T statistic for the difference in means (Ttest). Which of these values can you find in the lm() output above?  
 ```{r}
-# Re-print MW
+# Re-print MF
 
 # Re-print MeanDiff
 
@@ -182,7 +182,7 @@ linmod <- lm(Height~Male, data=height)
   
 ```{r}
 # Estimate standard error of b_0 
-# (hint: remember that b_0=MW and you can estimate the SE of the mean using the central limit theorem)
+# (hint: remember that b_0=MF and you can estimate the SE of the mean using the central limit theorem)
 
 # Use the standard error of b_0 to calculate the t value
 
